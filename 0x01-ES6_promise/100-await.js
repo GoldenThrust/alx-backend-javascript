@@ -2,11 +2,18 @@ import { uploadPhoto, createUser } from './utils';
 
 export default async function asyncUploadUser() {
   try {
-    const [photoData, userData] = await Promise.allSettled([uploadPhoto(), createUser()]);
+    const [photoData, userData] = await Promise.allSettled([
+      uploadPhoto(),
+      createUser(),
+    ]);
+
+    if (photoData.status !== 'fulfilled' || userData.status !== 'fulfilled') {
+      return { photo: null, user: null };
+    }
 
     const response = {
-      photo: photoData.status === 'fulfilled' ? photoData.value : null,
-      user: userData.status === 'fulfilled' ? userData.value : null,
+      photo: photoData.value,
+      user: userData.value,
     };
 
     return response;
