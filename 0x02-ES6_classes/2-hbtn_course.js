@@ -1,4 +1,4 @@
-class HolbertonCourse {
+export default class HolbertonCourse {
   constructor(name, length, students) {
     this.#checkType(name, String);
     this.#checkType(length, Number);
