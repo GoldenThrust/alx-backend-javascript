@@ -1,8 +1,8 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    this.#checkType(name, String);
-    this.#checkType(length, Number);
-    this.#checkType(students, Array);
+    this._checkType(name, String);
+    this._checkType(length, Number);
+    this._checkType(students, Array);
     this._name = name;
     this._length = length;
     this._students = students;
@@ -14,7 +14,7 @@ export default class HolbertonCourse {
   }
 
   set name(name) {
-    this.#checkType(name, String);
+    this._checkType(name, String);
     this._name = name;
   }
 
@@ -24,7 +24,7 @@ export default class HolbertonCourse {
   }
 
   set length(length) {
-    this.#checkType(length, Number);
+    this._checkType(length, Number);
     this._length = length;
   }
 
@@ -34,11 +34,11 @@ export default class HolbertonCourse {
   }
 
   set students(student) {
-    this.#checkType(student, Array);
+    this._checkType(student, Array);
     this._students = student;
   }
 
-  #checkType(value, type) {
+  _checkType(value, type) {
     switch (type) {
       case String:
         if (typeof value !== "string") {
