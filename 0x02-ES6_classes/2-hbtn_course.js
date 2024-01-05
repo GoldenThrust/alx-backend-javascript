@@ -38,29 +38,27 @@ export default class HolbertonCourse {
     this._students = student;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _checkType(value, type) {
     switch (type) {
       case String:
-        if (typeof value !== "string") {
-          throw new TypeError("Name must be a string");
+        if (typeof value !== 'string') {
+          throw new TypeError('Name must be a string');
         }
         break;
       case Number:
-        if (typeof value !== "number") {
-          throw new TypeError("Length must be a number");
+        if (typeof value !== 'number') {
+          throw new TypeError('Length must be a number');
         }
         break;
       case Array:
-        if (
-          !Array.isArray(value) ||
-          !value.every((student) => typeof student === "string")
-        ) {
-          throw new TypeError("Students must be an array of strings");
+        if (!Array.isArray(value) || !value.every((student) => typeof student === 'string')) {
+          throw new TypeError('Students must be an array of strings');
         }
         break;
       default:
         if (!(value instanceof type)) {
-          throw new TypeError("Incorrect type");
+          throw new TypeError('Incorrect type');
         }
     }
   }
