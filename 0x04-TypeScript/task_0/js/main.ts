@@ -26,3 +26,5 @@ function createTabularStudent(students: Array<Student>): void {
         console.log(student)
     }
 }
+
+createTabularStudent(studentsList);

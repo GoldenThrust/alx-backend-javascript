@@ -2,5 +2,5 @@
 
 for i in {0..10}
 do
-    cp *.js *.json task_${i}
+    cp -r node_modules *.json task_${i}
 done
