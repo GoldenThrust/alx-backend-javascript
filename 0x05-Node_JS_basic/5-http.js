@@ -44,12 +44,12 @@ const app = http.createServer((req, res) => {
   } else if (req.url === "/students") {
     countStudents(process.argv[2])
       .then((data) => {
-        res.write("This is the list of our students\n")
+        res.write("This is the list of our students\n");
         res.end(data);
       })
       .catch((error) => {
         res.writeHead(500);
-        res.write("This is the list of our students\n")
+        res.write("This is the list of our students\n");
         res.end(error.message);
       });
   } else {

@@ -34,7 +34,7 @@ function countStudents(path) {
           }. List: ${students.join(", ")}`
         );
       }
-      resolve()
+      resolve();
     });
   });
 }
