@@ -6,7 +6,7 @@ class StudentsController {
     readDatabase(process.argv[2])
       .then((data) => {
         for (const key in data) {
-          if (Object.hasProperty.call(data, key)) {
+          if (Object.hasOwnProperty.call(data, key)) {
             resp += `Number of students in ${key}: ${data[key].length}. List: ${data[key].join(', ')}\n`;
           }
         }

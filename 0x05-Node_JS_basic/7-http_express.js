@@ -30,7 +30,7 @@ function countStudents(path) {
       }
       let log = `Number of students: ${numStudents}\n`;
       for (const field in studentGroup) {
-        if (Object.hasProperty.call(studentGroup, field)) {
+        if (Object.hasOwnProperty.call(studentGroup, field)) {
           const students = studentGroup[field];
           log += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
         }
