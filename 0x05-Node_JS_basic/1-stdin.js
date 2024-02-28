@@ -1,4 +1,4 @@
-process.stdout.write('Welcome to Holberton School, what is your name?');
+console.log('Welcome to Holberton School, what is your name?');
 
 process.stdin.on('readable', () => {
   const chunk = process.stdin.read();
@@ -8,5 +8,5 @@ process.stdin.on('readable', () => {
 });
 
 process.stdin.on('end', () => {
-  process.stdout.write('This important software is now closing');
+  console.log('This important software is now closing');
 });
