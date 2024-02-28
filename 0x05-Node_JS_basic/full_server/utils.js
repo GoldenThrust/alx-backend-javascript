@@ -23,9 +23,10 @@ function readDatabase(path) {
           studentGroup[field] = [...studentGroup[field], firstname];
         }
       }
-      resolve(studentGroup)
+      resolve(studentGroup);
     });
   });
 }
 
 export default readDatabase;
+module.exports = readDatabase;
