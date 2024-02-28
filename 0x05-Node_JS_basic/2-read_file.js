@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function countStudents (path) {
+function countStudents(path) {
   if (!fs.existsSync(path)) {
     throw new Error('Cannot load the database');
   }
@@ -24,8 +24,7 @@ function countStudents (path) {
   for (const field in studentGroup) {
     const students = studentGroup[field];
     console.log(
-      `Number of students in ${field}: ${
-        students.length
+      `Number of students in ${field}: ${students.length
       }. List: ${students.join(', ')}`
     );
   }

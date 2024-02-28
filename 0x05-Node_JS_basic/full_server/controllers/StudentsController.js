@@ -1,14 +1,13 @@
 import readDatabase from '../utils';
 
 class StudentsController {
-  static getAllStudents (request, response) {
+  static getAllStudents(request, response) {
     let resp = 'This is the list of our students\n';
     readDatabase(process.argv[2])
       .then((data) => {
         for (const key in data) {
-          resp += `Number of students in ${key}: ${
-            data[key].length
-          }. List: ${data[key].join(', ')}\n`;
+          resp += `Number of students in ${key}: ${data[key].length
+            }. List: ${data[key].join(', ')}\n`;
         }
         return response.status(200).send(resp);
       })
@@ -18,7 +17,7 @@ class StudentsController {
       });
   }
 
-  static getAllStudentsByMajor (request, response) {
+  static getAllStudentsByMajor(request, response) {
     if (!['CS', 'SWE'].includes(request.params.major)) {
       return response.status(500).send('Major parameter must be CS or SWE');
     }
