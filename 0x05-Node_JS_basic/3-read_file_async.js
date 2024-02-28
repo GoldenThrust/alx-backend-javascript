@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 function countStudents(path) {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     if (!fs.existsSync(path)) {
       throw new Error('Cannot load the database');
     }
@@ -27,11 +27,12 @@ function countStudents(path) {
       }
       console.log(`Number of students: ${numStudents}`);
       for (const field in studentGroup) {
-        const students = studentGroup[field];
-        console.log(
-          `Number of students in ${field}: ${students.length
-          }. List: ${students.join(', ')}`
-        );
+        if (Object.hasProperty.call(studentGroup, field)) {
+          const students = studentGroup[field];
+          console.log(
+            `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`,
+          );
+        }
       }
       resolve();
     });

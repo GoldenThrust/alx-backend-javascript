@@ -6,8 +6,9 @@ class StudentsController {
     readDatabase(process.argv[2])
       .then((data) => {
         for (const key in data) {
-          resp += `Number of students in ${key}: ${data[key].length
-            }. List: ${data[key].join(', ')}\n`;
+          if (Object.hasProperty.call(data, key)) {
+            resp += `Number of students in ${key}: ${data[key].length}. List: ${data[key].join(', ')}\n`;
+          }
         }
         return response.status(200).send(resp);
       })
@@ -22,11 +23,9 @@ class StudentsController {
       return response.status(500).send('Major parameter must be CS or SWE');
     }
     return readDatabase(process.argv[2])
-      .then((data) => {
-        return response
-          .status(200)
-          .send(`List: ${data[request.params.major].join(', ')}`);
-      })
+      .then((data) => response
+        .status(200)
+        .send(`List: ${data[request.params.major].join(', ')}`))
       .catch((error) => {
         response.status(500).send(`List: ${error.message}`);
       });

@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 function readDatabase(path) {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     if (!fs.existsSync(path)) {
       throw new Error('Cannot load the database');
     }
