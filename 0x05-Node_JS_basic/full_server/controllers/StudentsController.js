@@ -2,9 +2,9 @@ import readDatabase from '../utils';
 
 class StudentsController {
   static getAllStudents(request, response) {
-    let resp = 'This is the list of our students\n';
     readDatabase(process.argv[2])
       .then((data) => {
+        let resp = 'This is the list of our students\n';
         for (const key in data) {
           if (Object.hasOwnProperty.call(data, key)) {
             resp += `Number of students in ${key}: ${data[key].length}. List: ${data[key].join(', ')}\n`;
@@ -13,8 +13,7 @@ class StudentsController {
         return response.status(200).send(resp);
       })
       .catch((error) => {
-        resp += error.message;
-        response.status(500).send(resp);
+        response.status(500).send(error.message);
       });
   }
 
@@ -27,7 +26,7 @@ class StudentsController {
         .status(200)
         .send(`List: ${data[request.params.major].join(', ')}`))
       .catch((error) => {
-        response.status(500).send(`List: ${error.message}`);
+        response.status(500).send(`${error.message}`);
       });
   }
 }
