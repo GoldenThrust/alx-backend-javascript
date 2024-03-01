@@ -1,8 +1,6 @@
-import sinon from 'sinon';
-import Utils from './utils.js';
-import { expect } from 'chai';
-import sendPaymentRequestToApi from './3-payment.js';
-
+const sinon = require('sinon');
+const Utils = require('./utils.js');
+const sendPaymentRequestToApi = require('./4-payment.js');
 
 describe('sendPaymentRequestToApi', () => {
   it('send a payment request to the API', () => {
@@ -10,10 +8,10 @@ describe('sendPaymentRequestToApi', () => {
     const stub = sinon.stub(Utils, 'calculateNumber').returns(10);
 
     sendPaymentRequestToApi(100, 20);
-    expect(stub.calledWith('SUM', 100, 20)).to.be.true;
-    expect(stub.calledOnce).to.be.true;
-    expect(spy.calledWith('The total is: 10')).to.be.true;
-    expect(spy.calledOnce).to.be.true;
+
+    sinon.assert.calledWith(stub, 'SUM', 100, 20);
+    sinon.assert.calledWith(spy, 'The total is: 10');
+
     spy.restore();
     stub.restore();
   });
