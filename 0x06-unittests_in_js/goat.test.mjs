@@ -5,16 +5,27 @@ import sendPaymentRequestToApi from './3-payment.js';
 
 
 describe('sendPaymentRequestToApi', () => {
-  it('send a payment request to the API', () => {
-    const spy = sinon.spy(console, 'log');
-    const stub = sinon.stub(Utils, 'calculateNumber').returns(10);
+    let spy;
 
-    sendPaymentRequestToApi(100, 20);
-    expect(stub.calledWith('SUM', 100, 20)).to.be.true;
-    expect(stub.calledOnce).to.be.true;
-    expect(spy.calledWith('The total is: 10')).to.be.true;
-    expect(spy.calledOnce).to.be.true;
-    spy.restore();
-    stub.restore();
-  });
+    beforeEach(() => {
+        if (!spy) {
+            spy = sinon.spy(console, 'log');
+        }
+    });
+
+    afterEach(() => {
+        spy.resetHistory();
+    });
+
+    it('sendPaymentRequestToAPI with 100, and 20', () => {
+        sendPaymentRequestToApi(100, 20);
+        expect(spy.calledWith('The total is: 120')).to.be.true;
+        expect(spy.calledOnce).to.be.true;
+    });
+
+    it('sendPaymentRequestToAPI with 10, and 10', () => {
+        sendPaymentRequestToApi(10, 10);
+        expect(spy.calledWith('The total is: 20')).to.be.true;
+        expect(spy.calledOnce).to.be.true;
+    });
 });
