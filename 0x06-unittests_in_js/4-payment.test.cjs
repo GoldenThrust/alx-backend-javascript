@@ -1,11 +1,6 @@
-const sinon = require('sinon');
-const Utils = require('./utils');
-const { expect } = require('chai');
-const sendPaymentRequestToApi = require('./4-payment');
-
 describe('sendPaymentRequestToApi', () => {
   it('send a payment request to the API', () => {
-    const spy = sinon.spy(console.log);
+    const spy = sinon.spy(console, 'log');
     const stub = sinon.stub(Utils, 'calculateNumber').returns(10);
 
     sendPaymentRequestToApi(100, 20);
