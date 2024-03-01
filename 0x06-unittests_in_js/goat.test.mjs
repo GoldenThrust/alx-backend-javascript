@@ -1,12 +1,12 @@
-const sinon = require('sinon');
-const Utils = require('./utils');
-const { expect } = require('chai');
-const sendPaymentRequestToApi = require('./3-payment');
+import sinon from 'sinon';
+import Utils from './utils.js';
+import { expect } from 'chai';
+import sendPaymentRequestToApi from './3-payment.js';
 
 describe('sendPaymentRequestToApi', () => {
     it('should send a payment request to the API', () => {
         const spy = sinon.spy(Utils)
-
+    
         sendPaymentRequestToApi(100, 20);
         expect(spy.calculateNumber.calledWith('SUM', 100, 20)).to.be.true;
         expect(spy.calculateNumber.calledOnce).to.be.true;
